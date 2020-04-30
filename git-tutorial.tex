@@ -1,0 +1,175 @@
+%++++++++++++++++++++++++++++++++++++++++
+% Don't modify this section unless you know what you're doing!
+\documentclass[letterpaper,12pt]{article}
+\usepackage{tabularx} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+\hypersetup{
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,        % color of internal links
+	citecolor=blue,        % color of links to bibliography
+	filecolor=magenta,     % color of file links
+	urlcolor=blue         
+}
+%++++++++++++++++++++++++++++++++++++++++
+
+% Packages:
+\usepackage{amsmath}
+\usepackage{amsfonts}    % para mathbb
+\usepackage{mathrsfs}     % para usar mathscr. Hay que incluir ...?
+\usepackage{mathabx}     % para el simbolo de transformada de Fourier inversa.
+\usepackage{caption}       % para etiquetas en figuras y tablas
+\usepackage{pifont}          % Checkmark and x mark
+\usepackage[T1]{fontenc} % To add several authors
+\usepackage{enumitem}   % enumerate issues
+\usepackage{appendix}
+\usepackage{cellspace}   % In particular, allows to properly use $\dfrac{}{}$ expressions inside tables
+\setlength\cellspacetoplimit{3pt}
+\setlength\cellspacebottomlimit{3pt}
+\usepackage{xcolor} % to write in different colours
+\newcommand{\colred}[1]{\color{red} #1 \color{black}}
+\newcommand{\colblue}[1]{\color{blue} #1 \color{black}}
+\usepackage{lineno}
+
+%%%% several %%%%:
+\newcommand{\dsty}[1]{\displaystyle{#1}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\sph}[1]{\langle {#1} \rangle}
+
+%%%% \beguin y \end %%%%
+% 1) equation
+\newcommand{\beq}[0]{ \begin{equation} }
+\newcommand{\beql}[2]{ \begin{equation} \label{#1} }
+\newcommand{\eeq}[0]{ \end{equation} }
+% 2) align
+\newcommand{\bal}[0]{ \begin{align} }
+\newcommand{\eal}[0]{ \end{align} }
+% 3) align*
+\newcommand{\baln}[0]{ \begin{align*} }
+\newcommand{\ealn}[0]{ \end{align*} }
+% 4) enumerate
+\newcommand{\benum}[0]{ \begin{enumerate} }
+\newcommand{\eenum}[0]{ \end{enumerate} }
+% 5) itemize
+\newcommand{\bitem}[0]{ \begin{itemize} }
+\newcommand{\eitem}[0]{ \end{itemize} }
+%%%% Commands %%%
+% 1) Partial derivatives:
+\newcommand{\p}[0]{ \partial}
+\newcommand{\dpar}[2]{ \dfrac{\partial {#1}}{\partial {#2}} }
+\newcommand{\ddpar}[2]{ \dfrac{\partial^2 {#1}}{\partial {#2}^2} }
+\newcommand{\dppar}[3]{ \dfrac{\partial^{#1}{#2}}{\partial {#3}^{#1}} }
+% 2) Symbols
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+% 3) Integrals:
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\dintR}{\displaystyle\int_{\mathbb{R}}}
+\newcommand{\dintRd}{\displaystyle\int_{\mathbb{R}^d}}
+%%%% Theoremes %%%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{defi}{Definition}[section]
+%%%% Color box: 
+\usepackage{xcolor}
+\definecolor{softgray}{gray}{0.85}
+\usepackage{tcolorbox}
+\tcbset{colframe=white}
+%\newtcolorbox{mycolorbox}[1][]{capture=hbox,#1,colback=softgray,sharpish corners}
+\newtcolorbox{mycolorbox}[1][]{colback=softgray,sharpish corners}
+%%%% Fourier Transform
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{\Huge{\textbf{Tutorial de Git}} \\ Herramienta de Trabajo}
+\author{Josep Angel Vicente, Pablo Eleazar Merino Alonso}
+\date{\today}
+\maketitle
+%\begin{abstract}
+%  --- Abstract here ---
+%\end{abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Contexto}
+\textbf{GIT} es un sistema de control de versiones de archivos de programación, dedicado al seguimiento de cambios en dichos programas
+\begin{itemize}
+\item  Coordina el trabajo entre diferentes desarrolladores.
+\item Identificador de qué cambios se han hecho en el programa y la fecha de modificación
+\item Repositorios locales y remotos
+\item Puntos de guardado y modificación tanto en repositorios local or remote
+\end{itemize}
+
+\section{Inicio}
+\textbf{GIT} instala en nuestro sistema UNIX, un terminal bash, con mejores funcionalidades. En \textbf{GIT} existen 3 tipos de Estados
+\begin{itemize}
+\item \textbf{Working Directory}: Estado de trabajo de todos los archivos
+\item \textbf{Staging Area}: Estado de agregación para añadir al guardado en \textit{GIT}
+\item \textbf{Repository}: Estado de cambios definitivos para el repositorio remoto.
+\end{itemize}
+\begin{figure}[!b]
+	\centering
+  \includegraphics[scale=0.8]{basic.jpg}
+  \caption{3 Estados de \textit{GIT}}
+  \label{fig:basic}
+\end{figure}
+\subsection{Comandos Básicos}
+Aquí aparecerán los más importantes
+\begin{itemize}
+\item \textbf{\textit{git init}} Proyecto Nuevo
+\item \textbf{\textit{git add <file>}} Enviar los archivos que deseas del directorio de trabajo al \textit{staging area}
+\item \textbf{\textit{git status}} Visualización del estado de tus archivos
+\item \textbf{\textit{git commit}} Envío de archivos desde el \textit{staging area} hacia el repositorio, es un modo de manifestar un snapshot de la versión de tu código de trabajo
+\item \textbf{\textit{git push}} Envío de archivos al repositorio remoto, donde ya tienes una versión definitiva que quieres compartir con los demás desarrolladores que tiene permiso para modificar el código
+\item \textbf{\textit{git pull}} Comando que te dice que cambios han realizado los demás desarrolladores
+\item \textbf{\textit{git clone}}Copia desde el servidor central hasta el repositorio local
+
+\end{itemize}
+
+\section{Descargando el Remote}
+Partiendo de un directorio, en la consola
+\begin{verbatim}
+user@user $ git clone <url path>
+\end{verbatim}
+Podemos crear varios archivos y directorios a conveniencia, una vez hecho para subirlos al remoto, debemos usar...
+\begin{verbatim}
+$ git status  %Para ver que los archivos ahora estan para subir
+$ git add <file> %añade el archivo al staging area
+\end{verbatim}
+Una herramienta de visualización de cambios de un archivo que se ha modificado es
+\begin{verbatim}
+$ git diff
+\end{verbatim}
+Esto nos dice las diferencias del archivo que se encuentra en el \textit{staging area} y el que tenemos en el \textit{local}. En el caso de queramos añadir un añadir un archivo con un mensaje para los demás desarrolladores ponemos
+\begin{verbatim}
+$ git commit -m "Mensaje"
+\end{verbatim}
+Finalmente para subir todo al remoto hacemos 
+\begin{verbatim}
+$ git push
+\end{verbatim}
+y nos pedire un usuario y una clave.
+\begin{figure}[!b]
+	\centering
+  \includegraphics[scale=0.8]{diagram.jpg}
+  \caption{3 Estados de \textit{GIT}}
+  \label{fig:basic}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\bibliographystyle{IEEEtran.bst}                                           %
+%\bibliography{./bib} % local                                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
