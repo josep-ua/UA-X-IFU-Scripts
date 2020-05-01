@@ -12,7 +12,7 @@
 	linkcolor=blue,        % color of internal links
 	citecolor=blue,        % color of links to bibliography
 	filecolor=magenta,     % color of file links
-	urlcolor=blue         
+	urlcolor=blue
 }
 %++++++++++++++++++++++++++++++++++++++++
 
@@ -74,7 +74,7 @@
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{defi}{Definition}[section]
-%%%% Color box: 
+%%%% Color box:
 \usepackage{xcolor}
 \definecolor{softgray}{gray}{0.85}
 \usepackage{tcolorbox}
@@ -89,7 +89,7 @@
   \scaleto{%
     \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
     {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
-  }{\textheight}% 
+  }{\textheight}%
 }{2.4ex}}%
 \stackon[-6.9pt]{#1}{\tmpbox}%
 }
@@ -157,7 +157,7 @@ Esto nos dice las diferencias del archivo que se encuentra en el \textit{staging
 \begin{verbatim}
 $ git commit -m "Mensaje"
 \end{verbatim}
-Finalmente para subir todo al remoto hacemos 
+Finalmente para subir todo al remoto hacemos
 \begin{verbatim}
 $ git push
 \end{verbatim}
@@ -165,9 +165,15 @@ y nos pedire un usuario y una clave.
 \begin{figure}[!b]
 	\centering
   \includegraphics[scale=0.8]{diagram.jpg}
-  \caption{3 Estados de \textit{GIT}}
-  \label{fig:basic}
+  \caption{Diagrama básico de GitHub}
+  \label{fig:diagram}
 \end{figure}
+
+\section*{Ramas}
+Para crear una nueva rama
+\begin{verbatim}
+$ git branch <name>
+\end{verbatim}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\bibliographystyle{IEEEtran.bst}                                           %
 %\bibliography{./bib} % local                                               %
