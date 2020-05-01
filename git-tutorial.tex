@@ -170,9 +170,35 @@ y nos pedire un usuario y una clave.
 \end{figure}
 
 \section*{Ramas}
-Para crear una nueva rama
+Existen muchas ramas donde podemos volcar nuestro código sin poner en peligro el general.
+Para ello hace falta crear las llamadas \textit{ramas}
 \begin{verbatim}
 $ git branch <name>
+\end{verbatim}
+Una vez creadas, podemos cambiar entre ellas simplemente escribiendo
+\begin{verbatim}
+$ git checkout <name>
+\end{verbatim}
+Siendo la rama \textbf{\textit{MASTER}}, la más importante de todas. Una buena herramienta para visualizar
+los cambios realizados en un archivo es
+\begin{verbatim}
+$ git diff <name>
+\end{verbatim}
+Finalmente si estamos en nuestra rama y queremos volcar todos os archivos al master primero
+debemos
+\begin{verbatim}
+$ git merge master
+\end{verbatim}
+Esta herramienta coge todos los archivos de una rama y los envia a otra, en este caso al estar en nuestra rama
+el comando nos dice si existe algun tipo de conflicto entre ramas. Finalmente si queremos enviar todos nuestros archivos de rama al MASTER
+Hacemos un cambio  a Master y despues
+\begin{verbatim}
+$ git merge <name branch>
+\end{verbatim}
+
+Cabe destacar la importania de actualizar continuamente los archivos en cada rama
+\\begin{verbatim}
+$ git pull
 \end{verbatim}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\bibliographystyle{IEEEtran.bst}                                           %
