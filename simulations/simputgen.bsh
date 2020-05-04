@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# This script has been written as a tool used in the separation exercises, done during the spring and summer of 2016 at the
+# University of Alicante in the context of the proyect: Scientific and technological of instrument X-IFU of the ESA's ATHENA
+# mission: High resolution X-Ray spectroscopy in astrophysical scenarios.
+#
+# Written by P. Eleazar Merino Alonso. Last modification: 05/07/2016
+
+# Generator of SIMPUT simulations.
+# First,  we get the variables for the simulation
+# The variables must be given in the following order:
+#	1. name of the spectrum file .xcm
+#	2. Name of the output simput file, .simput
+#	3. Right ascension angle, RA
+#	4. Declination angle, Dec
+#	5. Luminosity, srcFlux
+
+simputfile RA=$3 \
+	   Dec=$4 \
+	   XSPECFile=$1 \
+	   MJDREF=50800.0 \
+	   Emin=0.2 \
+	   Emax=10.0 \
+	   srcFlux=$5 \
+	   Simput=$2 \
+	   Estep=1.0e-4
+
+
