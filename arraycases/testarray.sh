@@ -17,7 +17,7 @@
 # We also assume that files simputgen.bsh, xifusimul.bsh and create_spec_singlepix.bsh are place in the current folder.
 
 # We load the auxiliary functions library:
-source /home/xray/josep/ua-x-ifu-scripts/simulations/auxiliarystuff_separex4b.bsh
+source ./auxiliarystuff_separex4b.bsh
 
 #Models in use:
 A=cenx3
@@ -69,7 +69,7 @@ do
 
 	       mkdir $filename
 	       cd $filename
-	       
+
 	       #We create a log file for control the array:
 
 	       touch control.log
@@ -122,7 +122,7 @@ do
 	       #EXIT CURRENT DIRECTORY
 
 
-	       
+
 	       cd ..
 	    done
 
