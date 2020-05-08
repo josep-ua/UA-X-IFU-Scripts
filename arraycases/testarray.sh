@@ -25,7 +25,7 @@ B=mekal1
 C=mekal2
 
 #Simulations fixed parameters
-flux=4.4373301994e-12
+flux=0.0000000000044373301994
 filedirectory=xifu_crosstalk
 time=100
 configuration=LPA2
@@ -42,7 +42,7 @@ echo $xmlfile
 for separation in 2 3 5 7 10
 do
 
-    #Fix the separation between sources in degrees
+    #Fix the separation between the sources
     separ=$(echo "scale=16; $separation*0.0027778" | bc)
 
     #SECOND THE FLUX RATIO
@@ -91,12 +91,11 @@ do
 	       #Creating a simputfile containing two sources using simput merge command:
 
 	       . simputgen.bsh ${!model1}".xcm" ${!model1}"1.simput" 10.0 0.0 $flux1
-	       . simputgen.bsh ${!model2}".xcm" ${!model2}"1.simput" 10.0 $separ $flux2
+	       . simputgen.bsh ${!model2}".xcm" ${!model2}"2.simput" 10.0 $separ $flux2
                simputmerge ${!model1}"1.simput" ${!model2}"2.simput" combination.simput yes
 	      # . simputmerge.sh
 
 	       #Writting in control.log
-
 	       printf "Source 1 Parameters : \nmodel = "${!model1}" \nflux = "$flux1" \n" >> control.log
 	       printf "Source 2 Parameters : \nmodel = "${!model2}" \nflux = "$flux2" \n" >> control.log
 	       printf "Separation = "$separ " \n" >> control.log
