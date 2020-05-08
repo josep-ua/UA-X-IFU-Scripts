@@ -16,13 +16,13 @@
 #	6. Current mirror in use, 1190mm_xifu or 1469mm_xifu.
 #	7. Name of the xml file containig the description of the detector.
 
-XIFUPATH=$SIXTE/share/sixte/instruments/athena
+XIFUPATH=$SIXTE/share/sixte/instruments/athena-xifu2019
 
 xifupipeline \
 	prefix=$2 \
 	PixImpactList=piximpact.fits \
-	XMLFile=$XIFUPATH/$6/xifu_baseline.xml \
-	AdvXml=$XIFUPATH/$6/$7 \
+	XMLFile=$XIFUPATH/xifu_baseline.xml \
+	AdvXml=$XIFUPATH/$6 \
 	Background=no  \
 	RA=$3 Dec=$4 \
 	Simput=$1 \
