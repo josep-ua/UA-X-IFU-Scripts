@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# This script has been written as a tool used in several exercises, done during the spring and summer of 2016 at the
+# University of Alicante in the context of the proyect: Scientific and technological of instrument X-IFU of the ESA's ATHENA
+# mission: High resolution X-Ray spectroscopy in astrophysical scenarios.
+#
+# Written by P. Eleazar Merino Alonso. Started before 01/07/2016. Last modification: 05/08/2016
+
+# This script just calls the xifupipeline routine with usual configuration and passing to it the specific parameters,
+# that are taken here as input:
+#	1. Name of simputfile containig information about the source/sources we are going to simulate
+#	2. Prefix of output files
+#	3. RA, Right ascension angle.
+#	4. DEC, declination angle.
+#	5. Expossure time.
+#	6. Current mirror in use, 1190mm_xifu or 1469mm_xifu.
+#	7. Name of the xml file containig the description of the detector.
+
+XIFUPATH=$SIXTE/share/sixte/instruments/athena-xifu2019
+
+xifupipeline \
+	prefix=$2 \
+	PixImpactList=piximpact.fits \
+	XMLFile=$XIFUPATH/xifu_baseline.xml \
+	AdvXml=$XIFUPATH/$6 \
+	Background=no  \
+	RA=$3 Dec=$4 \
+	Simput=$1 \
+	Exposure=$5 \
+	UseRMF=T \
+	clobber=yes \
+#	Mission=ATHENA \
+	Instrument=XIFU \
+	Mode=normal
+
+
+#AdvXml=$XIFUPATH/xifu_detector_lpa25_tdm_40.xml
