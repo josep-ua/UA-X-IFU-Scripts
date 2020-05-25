@@ -1,9 +1,9 @@
 #!/bin/bash
 # Input parameters:
 events=$1
-#srcid=$2
-ra=$2
-dec=$3
+srcid=$2
+ra=$3
+dec=$4
 pixsize=0.001388888888888
 
 # The variable pixsize should have already been set by calling the function select_configuration, written in the file
@@ -28,21 +28,21 @@ makespec \
 	EvtFile=$events"_evt.fits" \
     	EventFilter="GRADING==1 && DEC > "$dec_low_lim" && DEC < "$dec_hig_lim" && RA > "$ra_low_lim" && RA < "$ra_hig_lim \
 	RSPPath=$file \
-	Spectrum="spectrum_hires_"$events"_src.fits" \
+	Spectrum="spectrum_hires_"$events"_src"$srcid".fits" \
     	clobber=yes
 
 makespec \
         EvtFile=$events"_evt.fits" \
         EventFilter="GRADING==2 && DEC > "$dec_low_lim" && DEC < "$dec_hig_lim" && RA > "$ra_low_lim" && RA < "$ra_hig_lim \
         RSPPath=$file \
-        Spectrum="spectrum_midres_"$events"_src.fits" \
+        Spectrum="spectrum_midres_"$events"_src"$srcid".fits" \
         clobber=yes
 
 makespec \
         EvtFile=$events"_evt.fits" \
         EventFilter="GRADING==3 && DEC > "$dec_low_lim" && DEC < "$dec_hig_lim" && RA > "$ra_low_lim" && RA < "$ra_hig_lim \
         RSPPath=$file \
-        Spectrum="spectrum_lowres_"$events"_src.fits" \
+        Spectrum="spectrum_lowres_"$events"_src"$srcid".fits" \
         clobber=yes
 
 
