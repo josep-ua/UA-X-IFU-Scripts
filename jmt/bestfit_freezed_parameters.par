@@ -1,0 +1,9 @@
+tbabs*mekal
+ idx  param          tie-to  freeze         value         min         max
+  1  tbabs(1).nH         0     1              0.5           0      100000  10^22
+  2  mekal(1).norm       0     0      0.000421246           0       1e+10  
+  3  mekal(1).kT         0     1                2      0.0808        79.9  keV
+  4  mekal(1).nH         0     1                1       1e-05       1e+19  cm-3
+  5  mekal(1).Abundanc   0     1                1           0        1000  
+  6  mekal(1).Redshift   0     1                0      -0.999          10  
+  7  mekal(1).switch     0     1                1           0          10  

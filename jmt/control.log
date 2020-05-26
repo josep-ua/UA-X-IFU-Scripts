@@ -1,0 +1,12 @@
+Case separ7_modelsBB 
+pixsize = 0.001388888888888  
+Source 1 Parameters : 
+model = mekal2 
+flux = 0.000000000001 
+Source 2 Parameters : 
+model = mekal2 
+flux = 0.000000000001 
+Separation = .0194446
+ X-IFU Simulation parameters: 
+time = 7000 
+xmlfile = xifu_detector_lpa_75um_AR0.5_pixoffset_mux40_pitch275um.xml 
